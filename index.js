@@ -25,32 +25,34 @@ bot.on("message", async (msg) => {
       }
     );
   } else if (text === "📚 Kurslar") {
-    await bot.sendMessage(
-      chatId,
-      `Bizda quyidagi kurslar mavjud:
-1. Web Dasturlash
-2. Mobil Dasturlash
-3. Grafik Dizayn
-4. Digital Marketing
-5. IT Asoslari`,
-      {
+    await bot.sendMessage(chatId,`
+    Assalomu Alaykum ${firstname}!
+    Bizning kursimiz oyiga 300ming so'm💲
+    Bizning kursda manashu darslar bor: 
+    `,{
+      reply_markup: {
+        keyboard: [
+          [{ text: "Ingliz-tili"}],
+          [{ text: "Rus-tili"}],
+          [{ text: "Matematika"}],
+          [{ text: "Dasturlash"}],
+          [{ text: "Dizayn"}],
+        ],
+        resize_keyboard: true,
+      },
+    }); 
+  } else if (text == Ingliz-tili) {
+      await bot.sendMessage(chatId, `Siz kursga qo'shildingiz soat 14:00 da IT parkda bo'ling ${firstname}!` ,{
         reply_markup: {
-          inline_keyboard: [
-            [{ text: "Ingliz tili", callback_data: "kurs_ingliz" }],
-            [{ text: "Rus tili", callback_data: "kurs_rus" }],
-            [{ text: "Matematika", callback_data: "kurs_math" }],
-            [{ text: "Dasturlash", callback_data: "kurs_dev" }],
-            [{ text: "Grafik Dizayn", callback_data: "kurs_design" }],
+          inline_keyboard:[
+            [{text: "Lactasiya"}],
           ],
         },
-      }
-    );
+      } );
+  } else if ( text === "Lacatsiya" ) {
+    await bot.sendLocation(chatId, 41.3870805, 60.3523528,)
   }
 });
 
-bot.on("callback_query", async (query) => {
-  const chatId = query.message.chat.id;
-  const data = query.data;
-});
 
 console.log("✅ Bot ishga tushdi");
